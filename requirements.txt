@@ -1,0 +1,8 @@
+discord==2.3.2
+requests
+psutil
+aiohttp
+pyperclip
+GPUtil
+py-cpuinfo
+clipboard
