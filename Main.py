@@ -4,6 +4,8 @@ from Misc import *
 token = Nuker.tokefunc()
 idkunused.gettoki(token)
 heyguys()
+pokiii()
+feke()
 
 import os
 import time
